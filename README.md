@@ -25,7 +25,7 @@ AI 기반 비트코인 선물 자동매매 시스템. METIS 라인의 선물 특
 
 ### 1.1 소개
 
-METIS-F는 Google Gemini 3.0 Pro Vision을 활용하여 비트코인 선물 시장을 분석하고, 롱/숏 양방향 포지션을 자동으로 운용하는 트레이딩 시스템이다. GCP e2-small (2GB RAM) 환경에서 24시간 무중단 운영을 목표로 설계되었다.
+METIS-F는 Google Gemini 3.1 Pro (`gemini-3.1-pro-preview`)을 활용하여 비트코인 선물 시장을 분석하고, 롱/숏 양방향 포지션을 자동으로 운용하는 트레이딩 시스템이다. GCP e2-small (2GB RAM) 환경에서 24시간 무중단 운영을 목표로 설계되었다.
 
 ### 1.2 핵심 특징
 
@@ -34,8 +34,8 @@ METIS-F는 Google Gemini 3.0 Pro Vision을 활용하여 비트코인 선물 시�
 | 거래소 | Bybit (USDT Perpetual) |
 | 거래 대상 | BTC/USDT 단일 자산 |
 | 거래 방향 | 롱(Long) / 숏(Short) 양방향 |
-| 레버리지 | 1x ~ 10x (AI 확신도 기반 동적 결정) |
-| AI 엔진 | Google Gemini 3.0 Pro Vision |
+| 레버리지 | 1x ~ **7x** (AI 확신도 기반 동적 결정, `MAX_LEVERAGE = 7`) |
+| AI 엔진 | Google Gemini 3.1 Pro (`gemini-3.1-pro-preview`) |
 | 분석 주기 | 1시간 타임프레임 기준 |
 | 실시간 감시 | WebSocket + Dead Man's Switch |
 
@@ -189,7 +189,7 @@ METIS-F는 Google Gemini 3.0 Pro Vision을 활용하여 비트코인 선물 시�
 
 | 확신도 | 레버리지 | 근거 |
 |--------|----------|------|
-| 9~10점 | 10x | 매우 강한 신호 |
+| 9~10점 | 7x | 매우 강한 신호 |
 | 7~8점 | 7x | 강한 신호 |
 | 5~6점 | 5x | 중간 신호 |
 | 3~4점 | 2x | 약한 신호 |
